@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+
+<body>
+    <form class="box mx-6 my-6" method="POST" action="/enviar">
+        <!--LOCADOR-->
+        <section class="section">
+            <p class="subtitle is-2">Dados Locador (a)</p>
+
+            <div class="columns">
+
+                <div class="column is-two-thirds">
+                    <div class="columns">
+                        <div class="column">
+                            <label class="label">Nome</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="nome completo" name="locador_nome"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="field column">
+                            <label class="label">CPF</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="CPF do locador" name="locador_cpf"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column field">
+                    <label class="label">SEXO</label>
+                    <div class="select">
+                        <select name="locador_sexo">
+                            <option>HOMEM</option>
+                            <option>MULHER</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="column is-one-fifth field">
+                    <label class="label">ESTADO CIVIL</label>
+                    <div class="select">
+                        <select name="locador_estado_civil">
+                            <option>Solteiro (a)</option>
+                            <option>Casado (a)</option>
+                            <option>Viúvo (a)</option>
+                            <option>Divorciado (a)</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="columns">
+
+                <div class="field column">
+                    <label class="label">NACIONALIDADE</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="nacionalidade do locador"
+                            name="locador_nacionalidade" required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">PROFISSÃO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="profissao do locador" name="locador_profissao"
+                            required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">CEP</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="CEP do locador" name="locador_cep" required>
+                    </div>
+                </div>
+
+                <div class="field column is-one-fifth">
+                    <label class="label">UF</label>
+                    <div class="control">
+                        <input class="input" type="text" maxlength="2" placeholder="UF" name="locador_uf" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+
+
+                <div class="field column">
+                    <label class="label">LOGRADOURO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="logradouro" name="locador_logradouro" required>
+                    </div>
+                </div>
+                <div class="field column">
+                    <label class="label">NUMERO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="numero" name="locador_numero" required>
+                    </div>
+                </div>
+                <div class="field column">
+                    <label class="label">COMPLEMENTO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="complemento" name="locador_complemento" required>
+                    </div>
+                </div>
+                <div class="field column">
+                    <label class="label">BAIRRO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="bairro" name="locador_bairro" required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">CIDADE</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="cidade" name="locador_cidade" required>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <!--LOCATARIO-->
+        <section class="section">
+            <p class="subtitle is-2">Dados Locatário (a)</p>
+
+            <div class="columns">
+                <div class="field column is-two-thirds">
+                    <label class="label">Nome</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="nome completo" name="locatario_nome" required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">SEXO</label>
+                    <div class="select">
+                        <select name="locatario_sexo">
+                            <option>HOMEM</option>
+                            <option>MULHER</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field column">
+                    <label class="label">ESTADO CIVIL</label>
+                    <div class="select">
+                        <select name="locatario_estado_civil">
+                            <option>Solteiro (a)</option>
+                            <option>Casado (a)</option>
+                            <option>Viúvo (a)</option>
+                            <option>Divorciado (a)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="columns">
+
+                <div class="field column">
+                    <label class="label">CPF</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="CPF do locador" name="locatario_cpf" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="columns">
+
+                <div class="field column">
+                    <label class="label">NACIONALIDADE</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="CPF do locador" name="locatario_nacionalidade"
+                            required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">PROFISSÃO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="profissao do locador" name="locatario_profissao"
+                            required>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--IMOVEL-->
+        <section class="section">
+            <p class="subtitle is-2">Dados imóvel</p>
+
+            <div class="columns">
+                <div class="field column">
+                    <label class="label">LOGRADOURO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="logradouro" name="imovel_rua" required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">NUMERO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="numero do imóvel" name="imovel_numero" required>
+                    </div>
+                </div>
+                <div class="field column">
+                    <label class="label">COMPLEMENTO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="complemento" name="imovel_complemento">
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="field column">
+                    <label class="label">CEP</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="CEP do imóvel" name="imovel_cep" required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">UF</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="UF" maxlength="2" name=" imovel_uf" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="columns">
+                <div class="field column">
+                    <label class="label">BAIRRO</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Bairro do imóvel" name="imovel_bairro" required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">CIDADE</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="cidade do imóvel" name="imovel_cidade" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="field column">
+                    <label class="label">Valor do Aluguel</label>
+                    <div class="control">
+                        <input class="input" type="number" placeholder="valor do imóvel" name="imovel_valor" required>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <label class="label">MESES DE ALUGUEL</label>
+                    <div class="control">
+                        <input class="input" type="number" placeholder="Duração do contrado de aluguel em meses" min="1"
+                            max="12" name="imovel_meses" required>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--buttons-->
+        <section class="section buttons are-medium">
+            <button class="button is-light" type="reset">Limpar</button>
+            <button class="button is-link" type="submit">Enviar</button>
+        </section>
+    </form> <!---EndForm-->
+
+    <!--footer-->
+    <footer class="footer">
+        <p class="has-text-centered">Desenvolvido por <span style="color: #5C6FFF;">Ricardo Breno</span></p>
+    </footer>
+
+</body>
+
+</html>
