@@ -1,27 +1,42 @@
 from datetime import datetime
-from flask import Flask, render_template, request, send_file, send_from_directory
-from main import criar_documento, salvar_documento, meses
-import os
+from flask import Flask, render_template, request, send_file
+from main import criar_documento, salvar_documento, meses, limpar_console
 
-limpar_console = lambda : os.system('clear' if os.name != "nt" else "clear")
 
 app = Flask(__name__)
+
+referencias = {}
 
 
 @app.route("/")
 def index():
-    return render_template("formulario_contrato.html")
+    return render_template("formulario_contrato.html", context=referencias)
 
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
+    global referencias
     limpar_console()
     # print(list(request.form.items()))
 
-    # criar um dicionario de referencias que será usado para fazer substituição no template docx
+    # criar um novo dicionario de referencias que será usado para fazer substituição no template docx
     referencias = {}
     for name, value in request.form.items():
+        # guarda nomes em MAIUSCULO
+        if name.upper() in ('LOCADOR_NOME', 'LOCATARIO_NOME'): 
+            value = value.upper()
+                
+        # adiciona value no dicionario de referencias
         referencias[name.upper()] = value
+
+        # altera infos para masculino ou feminino
+        for person in ('LOCADOR', 'LOCATARIO'):
+            if person + '_SEXO' == 'MACHO':
+                estado_civil = referencias[person + '_ESTADO_CIVIL']
+                estado_civil[-1] = 'o'
+                referencias[person + '_ESTADO_CIVIL'] = estado_civil
+        
+
     # adicionar data e hora atual as referencias do contrato
     referencias["DD"] = str(datetime.now().day)
     referencias["MM"] = meses[datetime.now().month]
