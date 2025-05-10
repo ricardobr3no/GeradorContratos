@@ -1,10 +1,6 @@
 import os
-from datetime import datetime
-from enum import Enum, auto
-
 from docx import Document
 from docx.document import Document as Document_type
-from docx.text.paragraph import Paragraph
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from rich.progress import track
 
@@ -18,28 +14,21 @@ meses = {
 }
 
 
-gender_flexible_words = [w[:-1] for w in['solteirx', 'casadx']]
+gender_flexible_words = [w[:-1] for w in['solteirx', 'divorciadx', 'viúvx', 'casadx', 'brasileirx', 'aposentadx', 'inscritx', 'domiciliadx']]
 
 
-class Genero(Enum):
-    MASCULINO = auto()
-    FEMININO = auto()
 
-
-def converte_palavra_genero(palavra: str, genero: Genero | str) -> str:
-    return palavra[:-1] + ('o' if genero in (Genero.MASCULINO, "HOMEM") else 'a')
+def converte_palavra_genero(palavra: str, genero: str) -> str:
+    return palavra[:-1] + ('o' if genero == "HOMEM" else 'a')
     
 
 def formata_paragrafos(documento: Document_type) -> Document_type:
     # adiciona negrito a primeira palavra quando tiver classula
-    p_data =  f"São Luís, {str(datetime.now().day).zfill(2)} de {meses[datetime.now().month]} de {datetime.year}."
     in_ceter = True
 
     for i, paragafo in enumerate(documento.paragraphs):
 
         paragafo.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER if in_ceter else WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-
-        # print((i, True) if in_ceter else (i, False))
 
         if i == 0: # primeiro paragafo
             text_run = paragafo.runs[0]
@@ -49,18 +38,18 @@ def formata_paragrafos(documento: Document_type) -> Document_type:
             in_ceter = False
             continue
 
-        elif paragafo.text.startswith("São Luís, "):
+        elif paragafo.text.startswith("São Luís, "):  # para onde tem a data do documento
             in_ceter = True
             paragafo.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER if in_ceter else WD_PARAGRAPH_ALIGNMENT.JUSTIFY
             print("centraliza")
             continue
 
-        elif paragafo.text.startswith('Testemunha'):
+        elif paragafo.text.startswith('Testemunha'): # area de Testemunha
             in_ceter = False
             paragafo.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER if in_ceter else WD_PARAGRAPH_ALIGNMENT.JUSTIFY
             continue
 
-        if paragafo.runs:
+        if paragafo.runs:  # estilização
             first_run = paragafo.runs[0]
             
             if first_run.text:
@@ -73,7 +62,6 @@ def formata_paragrafos(documento: Document_type) -> Document_type:
                 paragafo.add_run(remaing_text)
                 paragafo.runs[0] = first_run
 
-            # print(first_run.text)
     return documento
 
 
@@ -81,7 +69,6 @@ def criar_documento(template_path:str, referencias: dict) -> Document_type:
     documento = Document(template_path)
     # modifica template
     for paragafo in track(documento.paragraphs, description="Preechendo contrato..."):
-
         for codigo in referencias:
             paragafo.text = paragafo.text.replace(codigo, referencias[codigo])
 
