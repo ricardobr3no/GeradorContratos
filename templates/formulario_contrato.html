@@ -32,8 +32,8 @@
                             <div class="field column">
                                 <label class="label">CPF</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="CPF do locador" name="locador_cpf"
-                                        required>
+                                    <input class="input" type="text" placeholder="CPF do locador"
+                                        pattern="(^\d{3}\.\d{3}\.\d{3}\-\d{2})" name="locador_cpf" required>
                                 </div>
                             </div>
                         </div>
@@ -165,10 +165,10 @@
                         <label class="label">ESTADO CIVIL</label>
                         <div class="select">
                             <select name="locatario_estado_civil">
-                                <option>Solteiro (a)</option>
-                                <option>Casado (a)</option>
-                                <option>Viúvo (a)</option>
-                                <option>Divorciado (a)</option>
+                                <option value="solteiro">Solteiro (a)</option>
+                                <option value="casado">Casado (a)</option>
+                                <option value="viúvo">Viúvo (a)</option>
+                                <option value="divorciado">Divorciado (a)</option>
                             </select>
                         </div>
                     </div>
@@ -180,7 +180,8 @@
                     <div class="field column">
                         <label class="label">CPF</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="CPF do locador" name="locatario_cpf" required>
+                            <input class="input" type="text" placeholder="CPF do locador"
+                                patter="(^\d{3}\.\d{3}\.\d{3}\-\d{2})" name="locatario_cpf" required>
                         </div>
                     </div>
 
@@ -280,9 +281,21 @@
 
                     <div class="field column">
                         <label class="label">MESES DE ALUGUEL</label>
-                        <div class="control">
-                            <input class="input" type="number" placeholder="Duração do contrado em meses (1-12)" min="1"
-                                max="12" name="imovel_meses" required>
+                        <div class="control select">
+                            <select class="select">
+                                <option value="1 "> 1 mes</option>
+                                <option value="2 "> 2 meses</option>
+                                <option value="3 "> 3 meses</option>
+                                <option value="4 "> 4 meses</option>
+                                <option value="5 "> 5 meses</option>
+                                <option value="6 "> 6 meses</option>
+                                <option value="7 "> 7 meses</option>
+                                <option value="8 "> 8 meses</option>
+                                <option value="9 "> 9 meses</option>
+                                <option value="10"> 10 meses</option>
+                                <option value="11"> 11 meses</option>
+                                <option value="12"> 12 meses</option>
+                            </select>
                         </div>
                     </div>
                 </div>
