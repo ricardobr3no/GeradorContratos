@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, request, send_file, redirect
+from flask import Flask, render_template, request, send_file 
 from main import (converte_palavra_genero, criar_documento,
                     salvar_documento, meses, limpar_console)
 import requests
