@@ -78,7 +78,7 @@ def enviar():
     referencias["YYYY"] = str(datetime.now().year)
     # substitui no template...
     novo_documento = criar_documento('template_contrato_de_aluguel_imovel.docx', referencias)
-    file_path = salvar_documento(novo_documento, "contrato de aluguel - fulano.docx")
+    file_path = salvar_documento(novo_documento, f"contrato de aluguel - {referencias['LOCATARIO_NOME']}.docx")
     return send_file(file_path, as_attachment=True)
 
 
