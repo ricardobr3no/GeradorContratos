@@ -8,6 +8,7 @@ python-docx = "*"
 rich = "*"
 flask = "*"
 flask-sqlalchemy = "*"
+requests = "*"
 
 [dev-packages]
 

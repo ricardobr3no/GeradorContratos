@@ -41,7 +41,6 @@ def formata_paragrafos(documento: Document_type) -> Document_type:
         elif paragafo.text.startswith("São Luís, "):  # para onde tem a data do documento
             in_ceter = True
             paragafo.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER if in_ceter else WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-            print("centraliza")
             continue
 
         elif paragafo.text.startswith('Testemunha'): # area de Testemunha
