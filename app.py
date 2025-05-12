@@ -1,13 +1,12 @@
 from datetime import datetime
 from flask import Flask, render_template, request, send_file, redirect
-from main import converte_palavra_genero, criar_documento, salvar_documento, meses, limpar_console
+from main import (converte_palavra_genero, criar_documento,
+                    salvar_documento, meses, limpar_console)
 import requests
 
 
 app = Flask(__name__)
 referencias = {}
-locador_uf = ''
-imovel_uf = ''
 
 
 def array_uf():
@@ -42,38 +41,22 @@ def update_fields():
         # adiciona value no dicionario de referencias
         referencias[name.upper()] = value
 
-    print('atualizou'.upper())
+    # print('atualizou'.upper())
 
-
-
-def redirecting(endpoint):
-    return redirect('/'+endpoint)
 
 
 @app.route("/")
 def index():
-    global locador_uf, imovel_uf
-
     locador_uf = request.args.get('locador_uf')
     imovel_uf = request.args.get('imovel_uf')
 
-    return render_template('formulario_contrato.html', array_uf=array_uf(), 
+    return render_template('formulario_contrato.html',
+                           array_uf=array_uf(), 
                            locador_uf=locador_uf if locador_uf else 'MA',
                            imovel_uf=imovel_uf if imovel_uf else 'MA', 
                            city_locador_uf=city_uf(locador_uf if locador_uf else 'MA'), 
                            city_imovel_uf=city_uf(imovel_uf if imovel_uf else 'MA'), 
                            context=referencias)
-
-
-@app.route("/<uf>")
-def toUF(uf):
-    global imovel_uf, locador_uf
-
-    imovel_uf = uf
-    locador_uf = uf
-
-    return render_template('formulario_contrato.html', array_uf=array_uf(), imovel_uf=imovel_uf, locador_uf=locador_uf,
-                           city_locador_uf=city_uf(uf), city_imovel_uf=city_uf(uf), context=referencias)
 
 
 @app.route('/enviar', methods=['POST'])
